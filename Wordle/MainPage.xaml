@@ -8,6 +8,19 @@
         <Label Text="Wordle Game"
                FontSize="32"
                HorizontalOptions="Center" />
+
+        <Label x:Name="MessageLabel"
+               FontSize="18"
+               HorizontalOptions="Center"
+               TextColor="Black" />
+
+        <Grid x:Name="GuessGrid"
+              RowSpacing="10"
+              ColumnSpacing="10"
+              HorizontalOptions="Center"
+              VerticalOptions="Center">
+            
+        </Grid>
     </StackLayout>
 
 </ContentPage>
