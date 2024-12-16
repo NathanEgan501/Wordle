@@ -26418,11 +26418,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Nathan Egan\\College\\VisualStudio\\2ndYear\\Cross_Platform_App_Dev\\Wordle\\Wordle\\Wordle.csproj",
+      "projectUniqueName": "C:\\Users\\Owner\\source\\repos\\CrossPlatform\\Wordle\\Wordle\\Wordle.csproj",
       "projectName": "Wordle",
-      "projectPath": "D:\\Nathan Egan\\College\\VisualStudio\\2ndYear\\Cross_Platform_App_Dev\\Wordle\\Wordle\\Wordle.csproj",
+      "projectPath": "C:\\Users\\Owner\\source\\repos\\CrossPlatform\\Wordle\\Wordle\\Wordle.csproj",
       "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-      "outputPath": "D:\\Nathan Egan\\College\\VisualStudio\\2ndYear\\Cross_Platform_App_Dev\\Wordle\\Wordle\\obj\\",
+      "outputPath": "C:\\Users\\Owner\\source\\repos\\CrossPlatform\\Wordle\\Wordle\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
