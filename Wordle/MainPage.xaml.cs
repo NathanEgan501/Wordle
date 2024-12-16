@@ -1,4 +1,5 @@
-﻿namespace Wordle
+﻿// g00435730 Nathan Egan
+namespace Wordle
 {
     public partial class MainPage : ContentPage
     {
