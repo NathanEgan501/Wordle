@@ -19,7 +19,7 @@
               ColumnSpacing="10"
               HorizontalOptions="Center"
               VerticalOptions="Center">
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -36,8 +36,24 @@
                 <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
-            
-        </Grid>
-    </StackLayout>
 
+            <Label Grid.Row="0" Grid.Column="0" x:Name="Guess00" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="0" Grid.Column="1" x:Name="Guess01" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="0" Grid.Column="2" x:Name="Guess02" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="0" Grid.Column="3" x:Name="Guess03" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="0" Grid.Column="4" x:Name="Guess04" FontSize="24" HorizontalOptions="Center" />
+
+        </Grid>
+
+        <Entry x:Name="GuessEntry"
+               Placeholder="Enter your guess"
+               FontSize="24"
+               HorizontalOptions="FillAndExpand" />
+
+        <Button Text="Submit Guess"
+                FontSize="24"
+                Clicked="OnSubmitGuessClicked" />
+
+    </StackLayout>
+    
 </ContentPage>
