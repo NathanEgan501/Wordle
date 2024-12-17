@@ -48,7 +48,23 @@ namespace Wordle
         private string GetRandomWord()
         {
             Random random = new Random();
+            int index = random.Next(wordList.Count);
+            return wordList[index].ToLower();
         }
+
+        private void ClearGuessGrid() 
+        {
+            for(int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    var label = (Label)GuessGrid.Children[i * 5 j];
+                    label.Text = string.Empty;
+                }
+            }
+        }
+
+        
 
     }
 
