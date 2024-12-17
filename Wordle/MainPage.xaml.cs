@@ -64,7 +64,58 @@ namespace Wordle
             }
         }
 
-        
+        private void OnSubmitGuessClicked(object sender, EventArgs e)
+        {
+            string guess = GuessEntry.Text?.ToLower();
+
+            if (string.IsNullOrWhiteSpace(guess) || guess.Length != 5)
+            {
+                MessageLabel.Text = "Please enter a valid 5-letter word.";
+                return
+            }
+
+            if (currentAttempt < attempts)
+            {
+                MessageLabel.Text = "No more attempts left! The word was: " + secretWord;
+                return;
+            }
+
+            DisplayGuess(guess);
+            GuessEntry.Text = string.Empty;
+            currentAttempt++;
+        }
+
+        private void DisplayGuess(string guess)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                var label = (Label)GuessGrid.Children[currentAttempt * 5 + i];
+                label.Text = guess[i].ToString();
+
+                if (guess[i] == secretWord[i])
+                {
+                    label.TextColor = Colors.Green;
+                }
+                else if (secretWord.Contains(guess[i]))
+                {
+                    label.TextColor= Colors.Yellow;
+                }
+                else
+                {
+                    label.TextColor= Colors.Red;
+                }
+
+            }
+
+            if (guess == secretWord)
+            {
+                MessageLabel.Text = "Congratulations! You've guessed the word!";
+            }
+            else if (currentAttempt > attempts - 1)
+            {
+                MessageLabel.Text = "Game Over! The word was: " + secretWord;
+            }
+        }
 
     }
 
