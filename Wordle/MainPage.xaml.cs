@@ -38,7 +38,16 @@ namespace Wordle
 
         private void StartNewGame()
         {
-            
+            currentAttempt = 0;
+            attempts = 6;
+            secretWord = GetRandomWord();
+            MessageLabel.Text = "Guess the word!";
+            ClearGuessGrid();
+        }
+
+        private string GetRandomWord()
+        {
+            Random random = new Random();
         }
 
     }
