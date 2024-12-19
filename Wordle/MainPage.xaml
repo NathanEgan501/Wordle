@@ -43,29 +43,29 @@
             <Label Grid.Row="0" Grid.Column="3" x:Name="Guess03" FontSize="24" HorizontalOptions="Center" />
             <Label Grid.Row="0" Grid.Column="4" x:Name="Guess04" FontSize="24" HorizontalOptions="Center" />
 
-            <Label Grid.Row="0" Grid.Column="0" x:Name="Guess05" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="1" x:Name="Guess06" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="2" x:Name="Guess07" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="3" x:Name="Guess08" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="4" x:Name="Guess09" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="1" Grid.Column="0" x:Name="Guess05" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="1" Grid.Column="1" x:Name="Guess06" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="1" Grid.Column="2" x:Name="Guess07" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="1" Grid.Column="3" x:Name="Guess08" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="1" Grid.Column="4" x:Name="Guess09" FontSize="24" HorizontalOptions="Center" />
 
-            <Label Grid.Row="0" Grid.Column="0" x:Name="Guess10" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="1" x:Name="Guess11" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="2" x:Name="Guess12" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="3" x:Name="Guess13" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="4" x:Name="Guess14" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="2" Grid.Column="0" x:Name="Guess10" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="2" Grid.Column="1" x:Name="Guess11" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="2" Grid.Column="2" x:Name="Guess12" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="2" Grid.Column="3" x:Name="Guess13" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="2" Grid.Column="4" x:Name="Guess14" FontSize="24" HorizontalOptions="Center" />
 
-            <Label Grid.Row="0" Grid.Column="0" x:Name="Guess15" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="1" x:Name="Guess16" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="2" x:Name="Guess17" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="3" x:Name="Guess18" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="4" x:Name="Guess19" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="3" Grid.Column="0" x:Name="Guess15" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="3" Grid.Column="1" x:Name="Guess16" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="3" Grid.Column="2" x:Name="Guess17" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="3" Grid.Column="3" x:Name="Guess18" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="3" Grid.Column="4" x:Name="Guess19" FontSize="24" HorizontalOptions="Center" />
 
-            <Label Grid.Row="0" Grid.Column="0" x:Name="Guess20" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="1" x:Name="Guess21" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="2" x:Name="Guess22" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="3" x:Name="Guess23" FontSize="24" HorizontalOptions="Center" />
-            <Label Grid.Row="0" Grid.Column="4" x:Name="Guess24" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="4" Grid.Column="0" x:Name="Guess20" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="4" Grid.Column="1" x:Name="Guess21" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="4" Grid.Column="2" x:Name="Guess22" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="4" Grid.Column="3" x:Name="Guess23" FontSize="24" HorizontalOptions="Center" />
+            <Label Grid.Row="4" Grid.Column="4" x:Name="Guess24" FontSize="24" HorizontalOptions="Center" />
 
         </Grid>
 

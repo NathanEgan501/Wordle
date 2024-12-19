@@ -81,7 +81,7 @@ namespace Wordle
                 return;
             }
 
-            if (currentAttempt < attempts)
+            if (currentAttempt >= attempts)
             {
                 MessageLabel.Text = "No more attempts left! The word was: " + secretWord;
                 return;
