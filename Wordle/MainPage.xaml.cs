@@ -58,7 +58,7 @@ namespace Wordle
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    var label = (Label)GuessGrid.Children[i * 5 j];
+                    var label = (Label)GuessGrid.Children[i * 5 + j];
                     label.Text = string.Empty;
                 }
             }
@@ -71,7 +71,7 @@ namespace Wordle
             if (string.IsNullOrWhiteSpace(guess) || guess.Length != 5)
             {
                 MessageLabel.Text = "Please enter a valid 5-letter word.";
-                return
+                return;
             }
 
             if (currentAttempt < attempts)
