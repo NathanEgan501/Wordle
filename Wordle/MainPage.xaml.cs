@@ -27,13 +27,10 @@ namespace Wordle
             {
                 using HttpClient client = new HttpClient();
                 string wordData = await client.GetStringAsync("https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/words.txt");
-                wordList = new List<string>(wordData.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries));
                 
-                if (wordList.Count == 0)
-                {
-                    MessageLabel.Text = "The word list is empty. Please try again later.";
-                    return;
-                }
+                Console.WriteLine("Raw word data: " + wordData);
+
+                wordList = new List<string>(wordData.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries));
 
                 StartNewGame();
             }
@@ -56,7 +53,9 @@ namespace Wordle
         {
             Random random = new Random();
             int index = random.Next(wordList.Count);
-            return wordList[index].ToLower();
+            string selectedWord = wordList[index].ToLower();
+            Console.WriteLine("Secret word selected: " + selectedWord);
+            return selectedWord;
         }
 
         private void ClearGuessGrid() 
@@ -74,7 +73,7 @@ namespace Wordle
 
         private void OnSubmitGuessClicked(object sender, EventArgs e)
         {
-            string guess = GuessEntry.Text?.ToLower();
+            string guess = GuessEntry.Text?.Trim().ToLower();
 
             if (string.IsNullOrWhiteSpace(guess) || guess.Length != 5)
             {
@@ -91,6 +90,16 @@ namespace Wordle
             DisplayGuess(guess);
             GuessEntry.Text = string.Empty;
             currentAttempt++;
+
+            if (guess == secretWord)
+            {
+                MessageLabel.Text = "Congratulations! You've guessed the word!";
+            }
+            else if (currentAttempt >= attempts) // Check if the last attempt was made
+            {
+                MessageLabel.Text = "Game Over! The word was: " + secretWord;
+            }
+
         }
 
         private void DisplayGuess(string guess)
@@ -115,14 +124,6 @@ namespace Wordle
 
             }
 
-            if (guess == secretWord)
-            {
-                MessageLabel.Text = "Congratulations! You've guessed the word!";
-            }
-            else if (currentAttempt > attempts - 1)
-            {
-                MessageLabel.Text = "Game Over! The word was: " + secretWord;
-            }
         }
 
     }
