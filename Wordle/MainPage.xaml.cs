@@ -28,6 +28,13 @@ namespace Wordle
                 using HttpClient client = new HttpClient();
                 string wordData = await client.GetStringAsync("https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/words.txt");
                 wordList = new List<string>(wordData.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries));
+                
+                if (wordList.Count == 0)
+                {
+                    MessageLabel.Text = "The word list is empty. Please try again later.";
+                    return;
+                }
+
                 StartNewGame();
             }
             catch (Exception ex)
