@@ -60,6 +60,7 @@ namespace Wordle
                 {
                     var label = (Label)GuessGrid.Children[i * 5 + j];
                     label.Text = string.Empty;
+                    label.TextColor = Colors.Black;
                 }
             }
         }
