@@ -1,12 +1,9 @@
-﻿// g00435730 Nathan Egan
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.Maui.Controls;
 using System.Net.Http;
-using System.Threading.Tasks;
-using System.Linq.Expressions;
+using System.IO;
 using System.Diagnostics;
-using System.Reflection;
 
 namespace Wordle
 {
@@ -25,36 +22,47 @@ namespace Wordle
 
         private async void LoadWordList()
         {
-            try
+            string fileName = "words.txt"; 
+            string localFilePath = Path.Combine(FileSystem.AppDataDirectory, fileName);
+
+            if (File.Exists(localFilePath))
             {
-                using HttpClient client = new HttpClient();
-                string wordData = await client.GetStringAsync("https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/words.txt");
-
-                Console.WriteLine("Raw word data: " + wordData);
-
-                if (string.IsNullOrWhiteSpace(wordData))
-                {
-                    Console.WriteLine("Warning: No data received from the word list URL.");
-                    return; 
-                }
-
-                wordList = new List<string>(wordData.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries));
-
-                Console.WriteLine($"Word list size: {wordList.Count}");
-
-                if (wordList.Count == 0)
-                {
-                    Console.WriteLine("Warning: Word list is empty after processing.");
-                    return; 
-                }
-
-                StartNewGame();
+                wordList = new List<string>(await File.ReadAllLinesAsync(localFilePath));
+                Console.WriteLine("Loaded word list from local file.");
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"Error loading word list: {ex.Message}");
-                Console.WriteLine(ex.StackTrace); 
+                try
+                {
+                    using HttpClient client = new HttpClient();
+                    string wordData = await client.GetStringAsync("https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/words.txt");
+
+                    Console.WriteLine("Raw word data: " + wordData);
+
+                    if (string.IsNullOrWhiteSpace(wordData))
+                    {
+                        Console.WriteLine("Warning: No data received from the word list URL.");
+                        return;
+                    }
+
+                    await File.WriteAllTextAsync(localFilePath, wordData);
+                    wordList = new List<string>(wordData.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries));
+                    Console.WriteLine("Downloaded and saved word list to local file.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error loading word list: {ex.Message}");
+                    return;
+                }
             }
+
+            if (wordList.Count == 0)
+            {
+                Console.WriteLine("Error: Word list is empty. Cannot start the game.");
+                return; 
+            }
+
+            StartNewGame();
         }
 
         private void StartNewGame()
@@ -76,15 +84,33 @@ namespace Wordle
             return selectedWord;
         }
 
-        private void ClearGuessGrid() 
+        private void ClearGuessGrid()
         {
-            for(int i = 0; i < 6; i++)
+            int totalChildren = GuessGrid.Children.Count;
+            Console.WriteLine($"Total Children in GuessGrid: {totalChildren}");
+
+            if (totalChildren != 30)
+            {
+                Console.WriteLine("Warning: Unexpected number of children in GuessGrid. Expected 30.");
+                return; 
+            }
+
+            for (int i = 0; i < 6; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    var label = (Label)GuessGrid.Children[i * 5 + j];
-                    label.Text = string.Empty;
-                    label.TextColor = Colors.Black;
+                    var index = i * 5 + j; 
+
+                    if (index < totalChildren)
+                    {
+                        var label = (Label)GuessGrid.Children[index];
+                        label.Text = string.Empty; 
+                        label.TextColor = Colors.Black; 
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Index out of bounds: {index}");
+                    }
                 }
             }
         }
@@ -111,13 +137,12 @@ namespace Wordle
 
             if (guess == secretWord)
             {
-                MessageLabel.Text = "Congratulations! You've guessed the word!";
+                MessageLabel.Text = $"Well done! You've guessed the word in {currentAttempt} attempts!";
             }
-            else if (currentAttempt >= attempts) 
+            else if (currentAttempt >= attempts)
             {
-                MessageLabel.Text = "Game Over! The word was: " + secretWord;
+                MessageLabel.Text = "Bad luck! The word was: " + secretWord;
             }
-
         }
 
         private void DisplayGuess(string guess)
@@ -155,7 +180,5 @@ namespace Wordle
                 }
             }
         }
-
     }
-
 }
