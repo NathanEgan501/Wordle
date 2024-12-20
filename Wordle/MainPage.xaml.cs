@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Wordle
 {
@@ -28,16 +29,31 @@ namespace Wordle
             {
                 using HttpClient client = new HttpClient();
                 string wordData = await client.GetStringAsync("https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/words.txt");
-                
+
                 Console.WriteLine("Raw word data: " + wordData);
 
+                if (string.IsNullOrWhiteSpace(wordData))
+                {
+                    Console.WriteLine("Warning: No data received from the word list URL.");
+                    return; 
+                }
+
                 wordList = new List<string>(wordData.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries));
+
+                Console.WriteLine($"Word list size: {wordList.Count}");
+
+                if (wordList.Count == 0)
+                {
+                    Console.WriteLine("Warning: Word list is empty after processing.");
+                    return; 
+                }
 
                 StartNewGame();
             }
             catch (Exception ex)
             {
-                MessageLabel.Text = "Error loading word list: " + ex.Message;
+                Console.WriteLine($"Error loading word list: {ex.Message}");
+                Console.WriteLine(ex.StackTrace); 
             }
         }
 
@@ -97,7 +113,7 @@ namespace Wordle
             {
                 MessageLabel.Text = "Congratulations! You've guessed the word!";
             }
-            else if (currentAttempt >= attempts) // Check if the last attempt was made
+            else if (currentAttempt >= attempts) 
             {
                 MessageLabel.Text = "Game Over! The word was: " + secretWord;
             }
@@ -106,29 +122,38 @@ namespace Wordle
 
         private void DisplayGuess(string guess)
         {
+            Console.WriteLine($"Current Attempt: {currentAttempt}, Total Children: {GuessGrid.Children.Count}");
+
             if (currentAttempt < attempts)
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    var label = (Label)GuessGrid.Children[currentAttempt * 5 + i];
-                    label.Text = guess[i].ToString();
+                    int index = currentAttempt * 5 + i;
 
-                    if (guess[i] == secretWord[i])
+                    if (index < GuessGrid.Children.Count)
                     {
-                        label.TextColor = Colors.Green;
-                    }
-                    else if (secretWord.Contains(guess[i]))
-                    {
-                        label.TextColor = Colors.Orange;
+                        var label = (Label)GuessGrid.Children[index];
+                        label.Text = guess[i].ToString();
+
+                        if (guess[i] == secretWord[i])
+                        {
+                            label.TextColor = Colors.Green;
+                        }
+                        else if (secretWord.Contains(guess[i]))
+                        {
+                            label.TextColor = Colors.Orange;
+                        }
+                        else
+                        {
+                            label.TextColor = Colors.Red;
+                        }
                     }
                     else
                     {
-                        label.TextColor = Colors.Red;
+                        Console.WriteLine($"Index out of bounds: {index}");
                     }
                 }
-
             }
-
         }
 
     }
