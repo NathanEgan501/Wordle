@@ -78,6 +78,10 @@
                 FontSize="24"
                 Clicked="OnSubmitGuessClicked" />
 
+        <Button Text="New Game"
+                FontSize="24"
+                Clicked="OnNewGameClicked" />
+
     </StackLayout>
     
 </ContentPage>

@@ -71,8 +71,9 @@ namespace Wordle
             attempts = 6;
             secretWord = GetRandomWord();
             MessageLabel.Text = "Guess the word!";
-            Debug.WriteLine("The secret word is: " + secretWord);
             ClearGuessGrid();
+            GuessEntry.Text = string.Empty;
+            Console.WriteLine("The secret word is: " + secretWord); 
         }
 
         private string GetRandomWord()
@@ -180,5 +181,21 @@ namespace Wordle
                 }
             }
         }
+
+        private void OnNewGameClicked(object sender, EventArgs e)
+        {
+            StartNewGame(); 
+        }
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     }
 }
