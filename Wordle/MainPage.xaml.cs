@@ -104,22 +104,25 @@ namespace Wordle
 
         private void DisplayGuess(string guess)
         {
-            for (int i = 0; i < 5; i++)
+            if (currentAttempt < attempts)
             {
-                var label = (Label)GuessGrid.Children[currentAttempt * 5 + i];
-                label.Text = guess[i].ToString();
+                for (int i = 0; i < 5; i++)
+                {
+                    var label = (Label)GuessGrid.Children[currentAttempt * 5 + i];
+                    label.Text = guess[i].ToString();
 
-                if (guess[i] == secretWord[i])
-                {
-                    label.TextColor = Colors.Green;
-                }
-                else if (secretWord.Contains(guess[i]))
-                {
-                    label.TextColor= Colors.Yellow;
-                }
-                else
-                {
-                    label.TextColor= Colors.Red;
+                    if (guess[i] == secretWord[i])
+                    {
+                        label.TextColor = Colors.Green;
+                    }
+                    else if (secretWord.Contains(guess[i]))
+                    {
+                        label.TextColor = Colors.Orange;
+                    }
+                    else
+                    {
+                        label.TextColor = Colors.Red;
+                    }
                 }
 
             }
