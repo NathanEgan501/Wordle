@@ -5,6 +5,7 @@ using Microsoft.Maui.Controls;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using System.Diagnostics;
 
 namespace Wordle
 {
@@ -46,6 +47,7 @@ namespace Wordle
             attempts = 6;
             secretWord = GetRandomWord();
             MessageLabel.Text = "Guess the word!";
+            Debug.WriteLine("The secret word is: " + secretWord);
             ClearGuessGrid();
         }
 
