@@ -18,6 +18,25 @@ namespace Wordle
         {
             InitializeComponent();
             LoadWordList();
+            var savedTheme = Preferences.Get("app_theme", "Light Mode");
+            ApplyTheme(savedTheme);
+        }
+
+        private void ApplyTheme(string theme)
+        {
+            if (theme == "Dark Mode")
+            {
+                Application.Current.UserAppTheme = AppTheme.Dark;
+            }
+            else
+            {
+                Application.Current.UserAppTheme = AppTheme.Light;
+            }
+        }
+
+        private async void OnSettingsClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SettingsPage());
         }
 
         private async void LoadWordList()
