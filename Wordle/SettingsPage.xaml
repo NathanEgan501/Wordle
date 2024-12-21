@@ -6,6 +6,7 @@
 
     <StackLayout Padding="20">
         <Label Text="Settings" FontSize="32" HorizontalOptions="Center" />
+
         <Label Text="Select Theme:" FontSize="18" />
         <Picker x:Name="ThemePicker" SelectedIndexChanged="OnThemeChanged">
             <Picker.ItemsSource>
@@ -15,5 +16,9 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
+
+        <Label Text="Adjust Font Size:" FontSize="18" />
+        <Slider x:Name="FontSizeSlider" Minimum="10" Maximum="30" ValueChanged="OnFontSizeChanged" />
+        <Label x:Name="FontSizeLabel" Text="Font Size: 14" FontSize="14" />
     </StackLayout>
 </ContentPage>

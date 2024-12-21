@@ -6,9 +6,9 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
-    <MauiXaml Update="SettingsPage.xaml">
+    <EmbeddedResource Update="SettingsPage.xaml">
       <SubType>Designer</SubType>
-    </MauiXaml>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Update="App.xaml">

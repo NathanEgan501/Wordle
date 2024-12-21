@@ -9,6 +9,7 @@ namespace Wordle
 {
     public partial class MainPage : ContentPage
     {
+        public double FontSize { get; set; }
         private string secretWord;
         private int attempts;
         private List<string> wordList = new List<string>();
@@ -20,6 +21,16 @@ namespace Wordle
             LoadWordList();
             var savedTheme = Preferences.Get("app_theme", "Light Mode");
             ApplyTheme(savedTheme);
+
+            FontSize = Preferences.Get("font_size", 14.0);
+            UpdateFontSize();
+        }
+
+        private void UpdateFontSize()
+        {
+            TitleLabel.FontSize = FontSize;
+            MessageLabel.FontSize = FontSize;
+            GuessEntry.FontSize = FontSize;
         }
 
         private void ApplyTheme(string theme)

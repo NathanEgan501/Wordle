@@ -5,14 +5,14 @@
              BackgroundColor="White">
 
     <StackLayout Padding="20">
-        <Label Text="Wordle Game"
-               FontSize="32"
+        <Label x:Name="TitleLabel" Text="Wordle Game"
+               TextColor="{DynamicResource PrimaryTextColor}"
+               FontSize="24" 
                HorizontalOptions="Center" />
 
         <Label x:Name="MessageLabel"
-               FontSize="18"
-               HorizontalOptions="Center"
-               TextColor="Black" />
+               FontSize="24"
+               TextColor="{DynamicResource MessageTextColor}" />
 
         <Grid x:Name="GuessGrid"
               RowSpacing="10"
@@ -71,21 +71,19 @@
 
         <Entry x:Name="GuessEntry"
                Placeholder="Enter your guess"
-               FontSize="24"
+               FontSize="24" 
                HorizontalOptions="FillAndExpand" />
 
         <Button Text="Submit Guess"
-                FontSize="24"
+                FontSize="24" 
                 Clicked="OnSubmitGuessClicked" />
 
         <Button Text="New Game"
-                FontSize="24"
+                FontSize="24" 
                 Clicked="OnNewGameClicked" />
 
         <Button Text="Settings"
-                FontSize="24"
+                FontSize="24" 
                 Clicked="OnSettingsClicked" />
-
     </StackLayout>
-    
-</ContentPage>
+</ContentPage> 

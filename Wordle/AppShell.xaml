@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="Wordle.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Wordle"
-    Shell.FlyoutBehavior="Flyout"
-    Title="Wordle">
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="Wordle.AppShell">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Title="Home" ContentTemplate="{DataTemplate local:HomePage}" />
+
+    <FlyoutItem Title="Settings">
+        <ShellContent Title="Preferences" ContentTemplate="{DataTemplate local:SettingsPage}" />
+    </FlyoutItem>
+
+    <TabBar>
+        <Tab Title="About">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        </Tab>
+    </TabBar>
 
 </Shell>
