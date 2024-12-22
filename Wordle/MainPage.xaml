@@ -82,8 +82,5 @@
                 FontSize="24" 
                 Clicked="OnNewGameClicked" />
 
-        <Button Text="Settings"
-                FontSize="24" 
-                Clicked="OnSettingsClicked" />
     </StackLayout>
 </ContentPage> 

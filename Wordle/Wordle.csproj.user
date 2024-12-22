@@ -6,11 +6,6 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Update="SettingsPage.xaml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
